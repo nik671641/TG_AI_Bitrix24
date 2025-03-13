@@ -11,23 +11,15 @@ Python версии 3.8 или выше
 1.2. Установка зависимостей
 Склонируйте репозиторий проекта:
 
-bash
-Копировать
-Редактировать
 git clone https://your-repository-url.git
 cd your-repository-directory
 Установите зависимости:
 
-bash
-Копировать
-Редактировать
+
 pip install -r requirements.txt
 1.3. Конфигурация окружения
 Настройка конфигурации: В корневом каталоге проекта создайте файл .env и добавьте следующие параметры:
 
-bash
-Копировать
-Редактировать
 BITRIX24_API_KEY=your_bitrix24_api_key
 BITRIX24_DOMAIN=https://your-bitrix24-domain.bitrix24.ru
 TELEGRAM_BOT_API_TOKEN=your_telegram_bot_api_token
@@ -40,15 +32,9 @@ TELEGRAM_BOT_API_TOKEN — токен вашего Telegram-бота.
 DATABASE_URL — строка подключения к базе данных PostgreSQL.
 Создание базы данных: Если база данных еще не создана, создайте ее с помощью SQL-запроса:
 
-sql
-Копировать
-Редактировать
 CREATE DATABASE your_database_name;
 Применение миграций: В случае наличия миграций в проекте, выполните их:
 
-bash
-Копировать
-Редактировать
 alembic upgrade head
 2. Настройка
 2.1. Настройка Telegram-бота
