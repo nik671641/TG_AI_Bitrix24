@@ -42,7 +42,6 @@ user_name = None
 text = None
 
 
-
 @router.message(Command("start"))
 async def cmd_start(message: Message):
     user_id = message.from_user.id
@@ -254,10 +253,11 @@ async def finish_survey(message: types.Message, state: FSMContext):
 
     keyboard = InlineKeyboardMarkup(inline_keyboard=[
         [
-            InlineKeyboardButton(text="Связаться с менеджером"),
-            InlineKeyboardButton(text="Перейти к оплате"),
-            InlineKeyboardButton(text="Дополнительный вопро",)
-        ]])
+            InlineKeyboardButton(text="Связаться с менеджером", callback_data="contact_manager"),
+            InlineKeyboardButton(text="Перейти к оплате", callback_data="go_to_payment"),
+            InlineKeyboardButton(text="Дополнительный вопрос", callback_data="extra_question")
+        ]
+    ])
 
     reply = await message.answer("Спасибо! Ваши данные отправлены менеджеру. Мы скоро свяжемся с вами! 📞\n"
                                  "Если у вас есть какие-то вопросы смело задавайте))",
@@ -287,9 +287,22 @@ async def finish_survey(message: types.Message, state: FSMContext):
     # Обновляем время последней активности
     last_activity[user_id] = datetime.now()
 
-
-
     await state.clear()
+
+
+@router.callback_query(lambda c: c.data == "contact_manager")
+async def contact_manager_callback(callback: types.CallbackQuery):
+    await callback.message.answer("Менеджер скоро свяжется с вами!")
+
+
+@router.callback_query(lambda c: c.data == "go_to_payment")
+async def go_to_payment_callback(callback: types.CallbackQuery):
+    await callback.message.answer("Перейдите по ссылке для оплаты: https://example.com/payment")
+
+
+@router.callback_query(lambda c: c.data == "extra_question")
+async def extra_question_callback(callback: types.CallbackQuery):
+    await callback.message.answer("Какой у вас вопрос?")
 
 
 @router.message()
