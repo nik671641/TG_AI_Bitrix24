@@ -27,9 +27,6 @@ async def create_contact_in_bitrix(name, phone, email, address):
     return None
 
 
-# create_contact_in_bitrix("Иван", +37367234567, "narzullozugurov88@gmail.com", "Кишинев")
-
-
 # Функция для создания сделки в Bitrix24
 async def create_deal_in_bitrix(title, contact_id, opportunity):
     url = f"{BITRIX24_DOMAIN}/rest/1/{BITRIX24_API_KEY}/crm.deal.add.json"
@@ -106,11 +103,6 @@ async def get_contact_id_by_phone(phone):
         return data["result"][0]["ID"]  # Возвращаем ID первого найденного контакта
     return None
 
-
-# # Пример поиска контакта с номером телефона в нужном формате
-# phone_number = "+37367107269"
-# contact_id = get_contact_id_by_phone(phone_number)
-# print(f"ID клиента с номером {phone_number}: {contact_id}")
 
 # Получить id контракта по contact_id
 async def get_deal_id_by_contact(contact_id):
