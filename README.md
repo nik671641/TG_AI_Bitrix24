@@ -14,7 +14,7 @@
 ### 1.2. Установка зависимостей
 
 1. Склонируйте репозиторий проекта:
-   </br>`git clone https://your-repository-url.git cd your-repository-directory`
+   </br>`git clone https://github.com/nik671641/TG_AI_Bitrix24.git cd your-repository-directory`
 
 2. Установите зависимости:
    </br>`pip install -r requirements.txt`
